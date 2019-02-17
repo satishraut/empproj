@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emp Registration</title>
+</head>
+<body>
+
+Welcome to EmpInfomation Page...!
+
+<form action="http://localhost:8000/saveemp/" method="post">
+    {% csrf_token %}
+    EmpId :  <input type="text" name="id" value="{{emp.id}}"><br/><br/>
+    EmpFName :  <input type="text" name="fname" value="{{emp.fname}}"><br/><br/>
+    EmpLName :<input type="text" name="lname" value="{{emp.lname}}"><br/><br/>
+    EmpAddress :<input type="text" name="address" value="{{emp.address}}"><br/><br/>
+    EmpAge :<input type="text" name="age" value="{{emp.age}}"><br/><br/>
+    EmpSalary :<input type="text" name="salary" value="{{emp.salary}}"><br/><br/>
+    EmpEmail :<input type="text" name="email" value="{{emp.email}}"><br/><br/>
+    EmpCountry: <input type="text" name="country" value="{{emp.country}}"><br/><br/>
+    <input type="submit" value="Submit">
+</form>
+<br/><br/>
+<table>
+        <thead>
+        <td>Id</td>
+        <td>FirstName</td>
+        <td>LastName</td>
+        <td>Age</td>
+        <td>Salary</td>
+        <td>Address</td>
+        <td>Email</td>
+        <td>Country</td>
+        <td>Action</td>
+
+        </thead>
+
+    {% for emp in emps %}
+
+    <tr>
+        <td>{{emp.id}}</td>
+        <td>{{emp.fname}}</td>
+        <td>{{emp.lname}}</td>
+        <td>{{emp.age}}</td>
+        <td>{{emp.salary}}</td>
+        <td>{{emp.address}}</td>
+        <td>{{emp.email}}</td>
+        <td>{{emp.country}}</td>
+        <td>{{emp.action}}</td>
+
+        <td>
+            <a href="/editemp/{{emp.id}}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
+            <a href="/deleteemp/{{ emp.id }}">Delete</a>
+        </td>
+    </tr>
+
+    {% endfor %}
+</table>
+
+<br/> <br/>
+
+<br/><br/>
+
+
+<form action="http://localhost:8000/search/" method="post">
+        {% csrf_token %}
+          <input type="text" name="search"> <input type="submit" value="Search Emp" name="Search Emp">
+</form>
+{% if searchOb %}
+<table>
+        <thead>
+        <td>Id</td>
+        <td>FirstName</td>
+        <td>LastName</td>
+        <td>Age</td>
+        <td>Salary</td>
+        <td>Address</td>
+        <td>Email</td>
+        <td>Country</td>
+
+        </thead>
+
+        <tr>
+            <td>{{searchOb.id}}</td>
+            <td>{{searchOb.fname}}</td>
+            <td>{{searchOb.lname}}</td>
+            <td>{{searchOb.age}}</td>
+            <td>{{searchOb.salary}}</td>
+            <td>{{searchOb.address}}</td>
+            <td>{{searchOb.email}}</td>
+            <td>{{searchOb.country}}</td>
+        </tr>
+
+    </table>
+
+{% endif %}
+<br><br><br><br>
+</body>
+</html>
