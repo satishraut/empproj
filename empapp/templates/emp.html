@@ -10,6 +10,7 @@ Welcome to EmpInfomation Page...!
 
 <form action="http://localhost:8000/saveemp/" method="post">
     {% csrf_token %}
+     {{ form.as_p }}
     EmpId :  <input type="text" name="id" value="{{emp.id}}"><br/><br/>
     EmpFName :  <input type="text" name="fname" value="{{emp.fname}}"><br/><br/>
     EmpLName :<input type="text" name="lname" value="{{emp.lname}}"><br/><br/>
@@ -51,6 +52,7 @@ Welcome to EmpInfomation Page...!
         <td>
             <a href="/editemp/{{emp.id}}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>
             <a href="/deleteemp/{{ emp.id }}">Delete</a>
+
         </td>
     </tr>
 
@@ -59,7 +61,6 @@ Welcome to EmpInfomation Page...!
 
 <br/> <br/>
 
-<br/><br/>
 
 
 <form action="http://localhost:8000/search/" method="post">
@@ -95,5 +96,8 @@ Welcome to EmpInfomation Page...!
 
 {% endif %}
 <br><br><br><br>
+
+<
+</form>
 </body>
 </html>

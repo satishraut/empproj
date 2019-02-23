@@ -39,3 +39,6 @@ def searchemp(req):
 
     return render(req, "emp.html", {"eform": EmpForm(), "emps": Employee.objects.all(), "emp": fetchDummyEmp(),"searchOb":listOfEmps})
 
+
+
+

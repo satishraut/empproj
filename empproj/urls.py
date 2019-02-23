@@ -24,6 +24,5 @@ urlpatterns = [
     path('editemp/<int:eid>' ,editEmployeeInfo),
     path('deleteemp/<int:eid>',deleteEmployeeInfo),
     path('search/',searchemp),
-    
 
 ]
